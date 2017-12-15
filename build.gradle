@@ -101,6 +101,20 @@ model {
                 }
             }
         }
+        httpServer(NativeExecutableSpec) {
+            sources {
+                cpp {
+                    source {
+                        srcDirs 'src/http/native/cpp'
+                        include '**/*.cpp'
+                        lib library: "wpiutil"
+                    }
+                    exportedHeaders {
+                        srcDirs 'src/http/native/include'
+                    }
+                }
+            }
+        }
         // The TestingBase library is a workaround for an issue with the GoogleTest plugin.
         // The plugin by default will rebuild the entire test source set, which increases
         // build time. By testing an empty library, and then just linking the already built component
